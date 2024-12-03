@@ -1,6 +1,7 @@
+import { insertData } from "../../data/fetchDataToDB.js";
 import { UserModel } from "../models/user/userModel.js"
 
-export const createFirstUser = async () => {
+const createFirstUser = async () => {
     try{
         const userExists = await UserModel.findOne({
             where: { role: 'superadmin', email: 'superadmin@example.com' }
@@ -16,4 +17,9 @@ export const createFirstUser = async () => {
     }catch(error){
         console.error('Error creating superadmin:', error);
     }
+}
+
+export const init =  async () => {
+    await createFirstUser();
+    await insertData();
 }
