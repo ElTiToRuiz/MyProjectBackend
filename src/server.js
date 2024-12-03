@@ -92,8 +92,8 @@ app.use('/api/stats', statsRouter);
 
 // Connect to the database and setup associations
 await setupDatabase();
-await init();
 const PORT = process.env.PORT || 3000;
+await init();
 
 server.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);

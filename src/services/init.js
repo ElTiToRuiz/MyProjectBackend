@@ -1,4 +1,3 @@
-import { insertData } from "../../data/fetchDataToDB.js";
 import { UserModel } from "../models/user/userModel.js"
 
 const createFirstUser = async () => {
@@ -21,5 +20,4 @@ const createFirstUser = async () => {
 
 export const init =  async () => {
     await createFirstUser();
-    await insertData();
 }
