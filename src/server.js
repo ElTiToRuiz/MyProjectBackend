@@ -13,9 +13,8 @@ import { authRouter } from './routes/auth.js';
 import { addStaffToTeam, joinTeams, removeStaffFromTeam } from './sockets/teams.js';
 import { joinRoleRooms } from './sockets/index.js';
 import { supportRouter } from './routes/support.js';
-import { authentication } from './middlewares/authentication.js';
 import { statsRouter } from './routes/stats.js';
-import { createFirstUser } from './services/init.js';
+import { init } from './services/init.js';
 
 
 const app = express();
@@ -93,7 +92,7 @@ app.use('/api/stats', statsRouter);
 
 // Connect to the database and setup associations
 await setupDatabase();
-await createFirstUser();
+await init();
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
