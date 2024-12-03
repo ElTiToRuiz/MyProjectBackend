@@ -4,7 +4,7 @@ import { TEAMS } from "./teams.js";
 import { USERS } from "./users.js";
 
 const ADD_PRODUCT = async () => {
-    const ADD_PRODUCT_PATH = 'https://myprojectbackend-uic2.onrender.com/api/products';
+    const ADD_PRODUCT_PATH = 'http://localhost:9090/api/products';
     
     for (const product of products) {
         try {
@@ -44,7 +44,7 @@ const ADD_N_ORDERS = async (n) => {
 }
 
 const FETCH_ORDERS = async (order) => {
-    const ADD_ORDERS_PATH = 'https://myprojectbackend-uic2.onrender.com/api/orders';
+    const ADD_ORDERS_PATH = 'http://localhost:9090/api/orders';
     const response = await fetch(ADD_ORDERS_PATH, {
         method: 'POST',
         headers: {
@@ -57,7 +57,7 @@ const FETCH_ORDERS = async (order) => {
 }
 
 const AUTH = async () => {
-    const AUTH_PATH = 'https://myprojectbackend-uic2.onrender.com/api/users/register';
+    const AUTH_PATH = 'http://localhost:9090/api/users/register';
     try {
         const response = await fetch(AUTH_PATH, {
             method: 'POST',
@@ -78,16 +78,16 @@ const AUTH = async () => {
 }
 
 const ADD_PRODUCT_TO_ORDER = async () => {
-    const ADD_PRODUCT_TO_ORDER_PATH = 'https://myprojectbackend-uic2.onrender.com/api/orders/products';
+    const ADD_PRODUCT_TO_ORDER_PATH = 'http://localhost:9090/api/orders/products';
 
     try {
         // Obtener órdenes
-        const response = await fetch('https://myprojectbackend-uic2.onrender.com/api/orders/admin');
+        const response = await fetch('http://localhost:9090/api/orders/admin');
         console.log(response);
         const arrayOrders = await response.json();
 
         // Obtener productos
-        const response2 = await fetch('https://myprojectbackend-uic2.onrender.com/api/products');
+        const response2 = await fetch('http://localhost:9090/api/products');
         const arrayProducts = await response2.json();
         const product = () => arrayProducts[Math.floor(Math.random() * arrayProducts.length)];
 
@@ -124,7 +124,7 @@ const ADD_PRODUCT_TO_ORDER = async () => {
 
 
 const CREATE_USER = async () => {
-    const CREATE_USER_PATH = 'https://myprojectbackend-uic2.onrender.com/api/users/register';
+    const CREATE_USER_PATH = 'http://localhost:9090/api/users/register';
     const users = USERS;
     for (const user of users) {
         try {
@@ -142,7 +142,7 @@ const CREATE_USER = async () => {
 }
 
 const CREATE_FIRST_USER = async (user) => {
-    const CREATE_USER_PATH = 'https://myprojectbackend-uic2.onrender.com/api/users/create';
+    const CREATE_USER_PATH = 'http://localhost:9090/api/users/create';
     try {
         const response = await fetch(CREATE_USER_PATH, {
             method: 'POST',
@@ -160,7 +160,7 @@ const CREATE_FIRST_USER = async (user) => {
 }
 
 const CREATE_A_USER = async (user) => {
-    const CREATE_USER_PATH = 'https://myprojectbackend-uic2.onrender.com/api/users/register';
+    const CREATE_USER_PATH = 'http://localhost:9090/api/users/register';
     try {
         const response = await fetch(CREATE_USER_PATH, {
             method: 'POST',
@@ -179,7 +179,7 @@ const CREATE_A_USER = async (user) => {
 
 
 const CREATE_TEAM = async () => {
-    const CREATE_TEAM_PATH = 'https://myprojectbackend-uic2.onrender.com/api/teams/create';
+    const CREATE_TEAM_PATH = 'http://localhost:9090/api/teams/create';
     for (const team of TEAMS) {
         try {
             const response = await fetch(CREATE_TEAM_PATH, {
@@ -198,10 +198,10 @@ const CREATE_TEAM = async () => {
 }
 
 const ASSIGN_USER_TO_TEAM = async () => {
-    const ASSIGN_USER_TO_TEAM_PATH = 'https://myprojectbackend-uic2.onrender.com/api/teams/assign';
+    const ASSIGN_USER_TO_TEAM_PATH = 'http://localhost:9090/api/teams/assign';
     
-    const TEAMS = await (await fetch('https://myprojectbackend-uic2.onrender.com/api/teams')).json();
-    const USERS = await (await fetch('https://myprojectbackend-uic2.onrender.com/api/users')).json();
+    const TEAMS = await (await fetch('http://localhost:9090/api/teams')).json();
+    const USERS = await (await fetch('http://localhost:9090/api/users')).json();
     
     const getRandomUser = () => USERS[Math.floor(Math.random() * USERS.length)];
     
@@ -238,7 +238,7 @@ export const insertData = async() => {
     await CREATE_TEAM();
     console.log('Data inserted');
 }
-
+insertData();
 // (async () => {
 //     await ADD_PRODUCT();
 //     console.log('Products created');
