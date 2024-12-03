@@ -15,6 +15,7 @@ import { joinRoleRooms } from './sockets/index.js';
 import { supportRouter } from './routes/support.js';
 import { authentication } from './middlewares/authentication.js';
 import { statsRouter } from './routes/stats.js';
+import { createFirstUser } from './services/init.js';
 
 
 const app = express();
@@ -91,8 +92,8 @@ app.use('/api/support', supportRouter);
 app.use('/api/stats', statsRouter);
 
 // Connect to the database and setup associations
-setupDatabase();
-createFirstUser();
+await setupDatabase();
+await createFirstUser();
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
