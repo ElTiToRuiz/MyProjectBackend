@@ -80,6 +80,9 @@ io.on('connection', (socket) => {
 });
            
 // Routes
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+});
 app.use('/api/users', usersRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/products', productsRouter);

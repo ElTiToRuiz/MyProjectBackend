@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/server.js",
-    "start": "node src/ser7.js"
+    "dev": "node --watch src/entry.cjs",
+    "start": "node src/entry.cjs"
   },
   "keywords": [],
   "author": "",
