@@ -13,3 +13,5 @@ export const genereateRandomPassword = () => {
     }
     return password;
 }
+
+console.log(secretKey());
